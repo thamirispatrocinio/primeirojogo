@@ -1,0 +1,55 @@
+<html>
+
+<body>
+    <!--Area de desenho, papel de desenho dentro do browser-->
+    <canvas id="folha" width="600" height="500"></canvas>
+
+    <script>
+        //
+        //Executar a cada 0,03 segundos, funcao criada
+        window.onload = function(){
+            setInterval(executar, 1000 / 30);
+        }
+
+        //Posições iniciais da bola
+        var posicaoBolaX = posicaoBolaY = 10;
+
+        function executar(){
+            //Objetos de desenho, configuracao da area de desenho
+            var folhaDesenho = document.getElementById("folha");
+            var areaDesenho = folhaDesenho.getContext("2d");
+
+            //Variaveis definidas, medidas
+            var larguraCampo = 600;
+            var alturaCampo = 500;
+            var espessuraRede = 5;
+
+            //Posições iniciais da bola
+            var diametroBola = 10;
+
+            //Cor verde
+            areaDesenho.fillStyle = '#286047';
+
+            //Desenho do campo, um retangulo encostado nas bordas
+            areaDesenho.fillRect(0,0,larguraCampo,alturaCampo);
+
+            //Cor de trabalho, branca
+            areaDesenho.fillStyle ="#ffffff";
+
+            //Rede
+            areaDesenho.fillRect(larguraCampo / 2 - espessuraRede / 2, 0, espessuraRede, alturaCampo);
+
+            //Desenho bola
+            areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY - diametroBola / 2, diametroBola, diametroBola);
+            
+            //Calculo dos movimentos apos a funcao de desenho
+            posicaoBolaX = posicaoBolaX + 1;
+            posicaoBolaY = posicaoBolaY + 1;
+
+        console.log("tic tac");
+        }
+    </script>
+
+</body>
+
+</html>
